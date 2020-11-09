@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<style type="text/css">
+		#timebox
+		{
+			border: 2px solid #f00;
+			border-radius:5px;
+			height:200px;
+			width: 200px;
+			display:inline-block;
+			text-align:center;
+	</style>
+	<script type="text/javascript">
+		const clocks = document.getElementsByClassName("clock");
+
+		function updateClocks() {
+		  for (let clock of clocks) {
+			let timezone = clock.dataset.timezone;
+			let time = new Date().toLocaleTimeString("en-GB", {
+			  day: '2-digit',
+			  month: 'long',
+			  year: 'numeric',
+			  hour: '2-digit',
+			  minute: '2-digit',
+			  second: '2-digit',
+			  timeZone: timezone
+			});
+			clock.textContent = time;
+		  }
+		}
+		setInterval(updateClocks,500);
+	</script>
+<head>
+<body onload="updateClocks()">
+	<div id="timebox">
+		<h1>Lublin</h1> 
+		<span class="clock" data-timezone="Europe/Warsaw"></span>
+	</div>
+	<div id="timebox">
+		<h1>New York</h1> 
+		<span class="clock" data-timezone="America/New_York"></span>
+	</div>
+	<div id="timebox">
+		<h1>Sydney</h1> 
+		<span class="clock" data-timezone="Australia/Sydney"></span>
+	</div>
+	
+</body>
+</html>
